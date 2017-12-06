@@ -15,14 +15,23 @@ use Kristofvc\OpenIban\Response\Message;
 class IbanRepository
 {
     /**
+     * @var Client
+     */
+    private $client;
+
+    public function __construct(array $clientParams = [])
+    {
+        $this->client = new Client(['base_uri' => 'https://openiban.com'] + $clientParams);
+    }
+
+    /**
      * @param string $iban
      * @return Message
      * @throw TransferException When something wen't wrong sending the IBAN.
      */
     public function findIban(string $iban): Message
     {
-        $client = new Client(['base_uri' => 'https://openiban.com']);
-        $response = $client->request('GET', '/validate/' . $iban . '?getBIC=true&validateBankCode=true');
+        $response = $this->client->request('GET', '/validate/' . $iban . '?getBIC=true&validateBankCode=true');
 
         if ($response->getStatusCode() !== 200) {
             throw new TransferException('Iban can\'t be found');
