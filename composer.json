@@ -1,0 +1,25 @@
+{
+    "name": "kristofvc/open-iban",
+    "type": "service",
+    "description": "This is a library to integrate open-iban in your project",
+    "keywords": ["iban", "bic", "library", "service"],
+    "homepage": "http://github.com/kristofvc/open-iban",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kristof Van Cauwenbergh",
+            "email": "kristof.vancauwenbergh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "^6.1",
+        "netresearch/jsonmapper": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "Kristofvc\\OpenIban\\": "src"
+        }
+    },
+    "target-dir": "Kristofvc/OpenIban"
+}
